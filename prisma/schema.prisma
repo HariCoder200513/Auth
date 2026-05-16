@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  user
+  admin
+}
+
+model User {
+  id          String       @id @default(cuid())
+  username    String       @unique
+  role        Role         @default(user)
+  disabled    Boolean      @default(false)
+  credentials Credential[]
+  sessions    Session[]
+  challenges  Challenge[]
+  auditActions AuditLog[]   @relation("AuditActor")
+  auditTargets AuditLog[]   @relation("AuditTarget")
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Credential {
+  id           String   @id @default(cuid())
+  name         String?
+  credentialId String   @unique
+  publicKey    Bytes
+  counter      BigInt   @default(0)
+  transports   String[]
+  backedUp     Boolean  @default(false)
+  deviceType   String?
+  lastUsedAt   DateTime?
+  lastUsedIp   String?
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Session {
+  id        String   @id
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userAgent String?
+  ipAddress String?
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime @default(now())
+}
+
+model Challenge {
+  id        String   @id @default(cuid())
+  kind      String
+  challenge String
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  username  String?
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([kind, username])
+  @@index([kind, userId])
+}
+
+model AuditLog {
+  id           String   @id @default(cuid())
+  action       String
+  actorUserId  String?
+  actor        User?    @relation("AuditActor", fields: [actorUserId], references: [id], onDelete: SetNull)
+  targetUserId String?
+  target       User?    @relation("AuditTarget", fields: [targetUserId], references: [id], onDelete: SetNull)
+  metadata     Json?
+  ipAddress    String?
+  userAgent    String?
+  createdAt    DateTime @default(now())
+
+  @@index([action])
+  @@index([actorUserId])
+  @@index([targetUserId])
+  @@index([createdAt])
+}

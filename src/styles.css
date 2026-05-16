@@ -1,0 +1,426 @@
+:root {
+  color: #182024;
+  background: #eef3f1;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  align-items: center;
+  border: 1px solid #c7d2cf;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #182024;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 14px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.shell {
+  margin: 0 auto;
+  max-width: 1120px;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.topbar {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.brand {
+  border: 0;
+  background: transparent;
+  font-size: 22px;
+  font-weight: 800;
+  padding: 0;
+}
+
+.navActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.navActions .active {
+  background: #173b33;
+  border-color: #173b33;
+  color: #ffffff;
+}
+
+.panel {
+  background: #ffffff;
+  border: 1px solid #d9e2df;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgb(27 49 44 / 10%);
+  padding: 32px;
+}
+
+.heading {
+  align-items: flex-start;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  color: #62716d;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1;
+  margin: 0;
+}
+
+.statusBadge {
+  align-items: center;
+  background: #e9f6f0;
+  border: 1px solid #bde0d0;
+  border-radius: 999px;
+  color: #173b33;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 14px;
+}
+
+.error {
+  background: #fff1f0;
+  border: 1px solid #ffc4bc;
+  border-radius: 8px;
+  color: #9f1d13;
+  margin: 0 0 18px;
+  padding: 12px 14px;
+}
+
+.authForm {
+  display: grid;
+  gap: 16px;
+  max-width: 420px;
+}
+
+label {
+  color: #46534f;
+  display: grid;
+  gap: 8px;
+  font-weight: 700;
+}
+
+input,
+select {
+  border: 1px solid #c7d2cf;
+  border-radius: 8px;
+  min-height: 44px;
+  padding: 0 12px;
+}
+
+.primary {
+  background: #173b33;
+  border-color: #173b33;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.linkButton {
+  border: 0;
+  color: #245b4f;
+  justify-self: start;
+  padding: 0;
+}
+
+.stack {
+  display: grid;
+  gap: 18px;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tabs .active {
+  background: #173b33;
+  border-color: #173b33;
+  color: #ffffff;
+}
+
+.dashboard {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.metric {
+  border: 1px solid #d9e2df;
+  border-radius: 8px;
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+}
+
+.metric span {
+  color: #62716d;
+  font-size: 14px;
+}
+
+.metric strong {
+  font-size: 24px;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.sectionHeader {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.sectionHeader h2,
+.detailPanel h2 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+}
+
+.listItem {
+  align-items: center;
+  border: 1px solid #d9e2df;
+  border-radius: 8px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 14px;
+}
+
+.listItem p {
+  color: #62716d;
+  margin: 5px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.detailGrid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 18px;
+}
+
+.detailPanel {
+  border: 1px solid #d9e2df;
+  border-radius: 8px;
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+
+.compactItem {
+  border-top: 1px solid #d9e2df;
+  display: grid;
+  gap: 4px;
+  padding-top: 10px;
+}
+
+.compactItem span {
+  color: #62716d;
+  overflow-wrap: anywhere;
+}
+
+table {
+  border-collapse: collapse;
+  min-width: 780px;
+  width: 100%;
+}
+
+th,
+td {
+  border-bottom: 1px solid #d9e2df;
+  padding: 14px 10px;
+  text-align: left;
+}
+
+th {
+  color: #62716d;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.rowActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.credentialList {
+  border-top: 1px solid #d9e2df;
+  margin-top: 24px;
+  padding-top: 20px;
+}
+
+.credentialList h2 {
+  font-size: 20px;
+  margin: 0 0 12px;
+}
+
+.credential {
+  align-items: center;
+  border: 1px solid #d9e2df;
+  border-radius: 8px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  margin-bottom: 10px;
+  padding: 12px;
+}
+
+code {
+  overflow-wrap: anywhere;
+}
+
+.loader {
+  align-items: center;
+  background: #f5f8f7;
+  border: 1px solid #d9e2df;
+  border-radius: 8px;
+  color: #46534f;
+  display: inline-flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  min-height: 38px;
+  padding: 0 12px;
+}
+
+.spin {
+  animation: spin 0.8s linear infinite;
+}
+
+.empty {
+  border: 1px dashed #c7d2cf;
+  border-radius: 8px;
+  color: #62716d;
+  margin: 0;
+  padding: 18px;
+}
+
+.toastStack {
+  display: grid;
+  gap: 10px;
+  max-width: 360px;
+  position: fixed;
+  right: 24px;
+  top: 24px;
+  width: calc(100vw - 48px);
+  z-index: 20;
+}
+
+.toast {
+  border-radius: 8px;
+  box-shadow: 0 16px 40px rgb(27 49 44 / 16%);
+  font-weight: 700;
+  padding: 12px 14px;
+}
+
+.toast.success {
+  background: #e9f6f0;
+  border: 1px solid #bde0d0;
+  color: #173b33;
+}
+
+.toast.error {
+  background: #fff1f0;
+  border: 1px solid #ffc4bc;
+  color: #9f1d13;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 720px) {
+  .shell {
+    padding: 16px;
+  }
+
+  .topbar,
+  .heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .navActions {
+    justify-content: flex-start;
+  }
+
+  .panel {
+    padding: 22px;
+  }
+
+  .statusBadge {
+    align-self: flex-start;
+  }
+
+  .dashboard,
+  .credential,
+  .detailGrid,
+  .listItem {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHeader {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .toastStack {
+    right: 16px;
+    top: 16px;
+    width: calc(100vw - 32px);
+  }
+}
