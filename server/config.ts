@@ -16,8 +16,8 @@ export const config = {
   webauthn: {
     rpName: required('WEBAUTHN_RP_NAME', 'Z-Auth'),
     rpID: required('WEBAUTHN_RP_ID', 'localhost'),
-    origin: required('WEBAUTHN_ORIGIN', 'http://localhost:5173')
+    origin: required('WEBAUTHN_ORIGIN', 'http://localhost:5173').replace(/\/+$/, '')
   },
-  clientOrigin: required('WEBAUTHN_ORIGIN', 'http://localhost:5173'),
+  clientOrigin: required('WEBAUTHN_ORIGIN', 'http://localhost:5173').replace(/\/+$/, ''),
   isProduction: process.env.NODE_ENV === 'production'
 };
