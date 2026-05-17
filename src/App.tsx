@@ -200,6 +200,7 @@ export function App() {
       if (id === currentSessionId) {
         setUser(null);
         setView('login');
+        notify('error', 'Session revoked. Please sign in again.');
         return;
       }
       await loadMySessions();
